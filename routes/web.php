@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/category', function () {
-    return Inertia::render('Category');
-})->middleware(['auth', 'verified'])->name('category');
+Route::resource('category', CategoryController::class)->middleware(['auth', 'verified']);
 
 Route::get('/gallery', function () {
     return Inertia::render('PhotoGallery');
