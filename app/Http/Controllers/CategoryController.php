@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -14,7 +16,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Category');
+        $categories = Category::where('user_id', '=', Auth::id())
+                    ->get()->map(function ($category){
+                        return [
+                          'id' => $category->id,
+                          'name' => $category->name,
+                        ];
+            });
+
+        return Inertia::render('Category', ['categories' => $categories]);
     }
 
     /**

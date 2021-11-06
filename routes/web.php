@@ -17,7 +17,7 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Auth/Login', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -25,17 +25,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    sleep(2);
+// Dashboard
+Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Category
 Route::resource('category', CategoryController::class)->middleware(['auth', 'verified']);
 
+// Gallery
 Route::get('/gallery', function () {
     return Inertia::render('PhotoGallery');
 })->middleware(['auth', 'verified'])->name('gallery');
 
+// Documentation
 Route::get('/documentation', function () {
     return Inertia::render('Documentation');
 })->middleware(['auth', 'verified'])->name('documentation');

@@ -7,14 +7,14 @@
     <div class="row mb-4">
         <div class="col-xl-12">
             <div class="deshboard-top text-uppercase font-bold mb-2">
-                <h1>Photo Gallery - Category </h1>
+                <h6>Photo Gallery - Category </h6>
             </div>
             <hr>
         </div><!--Dashboard-head-->
     </div>
     <!-- /Row -->
 
-    <div class="dashboard-card">
+    <div class="dashboard-card mb-5">
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
@@ -61,8 +61,46 @@
                 </div>
             </div>
 
+
+            <div class="col-sm-6">
+                <div class="card">
+
+                    <div class="card-header">
+                        <h1>Category List</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(category, index) in categories" :key="index">
+                                <th scope="row">{{ index +1 }}</th>
+                                <td>{{ category.name }}</td>
+                                <td>@mdo</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
 </template>
+
+<script>
+export default {
+    props: {
+        categories: Object
+    }
+}
+</script>
 

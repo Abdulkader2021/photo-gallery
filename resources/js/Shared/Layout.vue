@@ -20,7 +20,7 @@
         <!-- Main Content -->
         <div class="encoder-pg-wrapper pb-0 px-0">
             <!-- Container -->
-            <div class="container-fluid">
+            <div class="container-fluid page-wrapper">
                 <slot />
             </div>
             <!-- /Container -->
@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import Navbar from "@/Components/Navbar";
-import Sidebar from "@/Components/Sidebar";
-import Footer from "@/Components/Footer";
+import Navbar from "@/Shared/Navbar";
+import Sidebar from "@/Shared/Sidebar";
+import Footer from "@/Shared/Footer";
 export default {
     components: {Navbar, Sidebar, Footer}
 }

@@ -10,7 +10,7 @@
                 <ul class="navbar-nav flex-column">
 
                     <li class="nav-item">
-                        <NavLink class="nav-link" href="/dashboard">
+                        <NavLink class="nav-link" href="/">
                             <i class="ion ion-ios-desktop"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </NavLink>

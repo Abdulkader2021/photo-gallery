@@ -30,9 +30,14 @@
                 Forgot your password?
             </Link>
 
+            <Link :href="route('register')" class="underline ml-4 text-sm text-gray-600 hover:text-gray-900">
+                Sign In
+            </Link>
+
             <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Log in
             </BreezeButton>
+
         </div>
     </form>
 </template>
@@ -61,6 +66,7 @@ export default {
 
     props: {
         canResetPassword: Boolean,
+        canRegister: Boolean,
         status: String,
     },
 

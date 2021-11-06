@@ -1305,8 +1305,7 @@ img.avatar-img.rounded-circle {
   color: #71748d;
   background-color: #fff;
   width: 100%;
-    top: 100vh;
-
+    bottom: 0;
 }
 .footer-text {
 	font-size: 14px;

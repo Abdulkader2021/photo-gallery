@@ -22,7 +22,7 @@
                             <span class="badge badge-success badge-indicator"></span>
                         </div>
                         <div class="media-body">
-                            <span>Madelyn Shane<i class="fa fa-angle-down"></i></span>
+                            <span> {{ $page.props.auth.user.name }} <i class="fa fa-angle-down"></i></span>
                         </div>
                     </div>
                 </a>
@@ -37,7 +37,7 @@
                     </a>
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> <span>Log out</span></a>
+                    <NavLink class="dropdown-item" :href="route('logout')" method="post" as="button"><i class="fa fa-power-off"></i> <span>Log out</span></NavLink>
                 </div>
             </li>
         </ul>
@@ -54,8 +54,10 @@
 </template>
 
 <script>
+import NavLink from "@/Components/NavLink";
 export default {
-    name: "Navbar"
+    name: "Navbar",
+  components: {NavLink}
 }
 </script>
 
