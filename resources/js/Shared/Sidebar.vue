@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import NavLink from "@/Components/NavLink";
+import NavLink from "@/Shared/NavLink";
 export default {
     components: {NavLink}
 }
