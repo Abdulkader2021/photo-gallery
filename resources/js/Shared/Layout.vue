@@ -21,7 +21,12 @@
         <div class="encoder-pg-wrapper pb-0 px-0">
             <!-- Container -->
             <div class="container-fluid page-wrapper">
+
+                <FlashMessage />
+
+
                 <slot />
+
             </div>
             <!-- /Container -->
             <!-- /Footer -->
@@ -37,8 +42,9 @@
 import Navbar from "@/Shared/Navbar";
 import Sidebar from "@/Shared/Sidebar";
 import Footer from "@/Shared/Footer";
+import FlashMessage from "@/Shared/FlashMessage";
 export default {
-    components: {Navbar, Sidebar, Footer}
+    components: {Navbar, Sidebar, Footer, FlashMessage},
 }
 
 </script>

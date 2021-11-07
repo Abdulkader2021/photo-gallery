@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 // Dashboard
 Route::get('/', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Category
@@ -35,12 +35,12 @@ Route::resource('category', CategoryController::class)->middleware(['auth', 'ver
 
 // Gallery
 Route::get('/gallery', function () {
-    return Inertia::render('PhotoGallery');
+    return Inertia::render('Gallery/PhotoGallery');
 })->middleware(['auth', 'verified'])->name('gallery');
 
 // Documentation
 Route::get('/documentation', function () {
-    return Inertia::render('Documentation');
+    return Inertia::render('Documentation/Documentation');
 })->middleware(['auth', 'verified'])->name('documentation');
 
 

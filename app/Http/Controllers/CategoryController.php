@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -17,14 +18,14 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::where('user_id', '=', Auth::id())
-                    ->get()->map(function ($category){
+                    ->paginate(10)->through(function ($category){
                         return [
                           'id' => $category->id,
                           'name' => $category->name,
                         ];
             });
 
-        return Inertia::render('Category', ['categories' => $categories]);
+        return Inertia::render('Category/Category', ['categories' => $categories]);
     }
 
     /**
@@ -45,7 +46,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'unique:categories', 'max:100']
+        ]);
+
+        $category = Category::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name
+        ]);
+
+        return Redirect::route('category.index', $category)->with('success', 'Category created');
     }
 
     /**
