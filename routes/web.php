@@ -31,7 +31,13 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Category
-Route::resource('category', CategoryController::class)->middleware(['auth', 'verified']);
+Route::get('category', [CategoryController::class, 'index'])->name('category.index')->middleware(['auth', 'verified']);
+Route::get('category/create', [CategoryController::class, 'create'])->name('category.create')->middleware(['auth', 'verified']);
+Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit')->middleware(['auth', 'verified']);
+Route::post('category/store', [CategoryController::class, 'store'])->name('category.store')->middleware(['auth', 'verified']);
+Route::put('category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware(['auth', 'verified']);
+Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware(['auth', 'verified']);
+
 
 // Gallery
 Route::get('/gallery', function () {

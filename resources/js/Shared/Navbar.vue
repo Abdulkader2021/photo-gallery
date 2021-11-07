@@ -4,7 +4,7 @@
         <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i
             class="ion ion-ios-menu"></i></a>
         <a class="navbar-brand" href="index.html">
-            <img class="brand-img d-inline-block mr-2" src="assets/default/logo.png" alt="brand" />Photo Gallery
+            <img class="brand-img d-inline-block mr-2" :src="`/assets/default/logo.png`" alt="brand" />Photo Gallery
         </a>
         <ul class="navbar-nav encoder-navbar-content">
             <li class="nav-item">
@@ -17,7 +17,7 @@
                     <div class="media">
                         <div class="media-img-wrap">
                             <div class="avatar">
-                                <img src="assets/default/default.png" alt="user" class="avatar-img rounded-circle">
+                                <img :src="`/assets/default/default.png`" alt="user" class="avatar-img rounded-circle">
                             </div>
                             <span class="badge badge-success badge-indicator"></span>
                         </div>

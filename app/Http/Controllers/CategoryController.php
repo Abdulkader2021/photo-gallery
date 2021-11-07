@@ -18,6 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::where('user_id', '=', Auth::id())
+                    ->orderBy('id', 'desc')
                     ->paginate(10)->through(function ($category){
                         return [
                           'id' => $category->id,
@@ -25,7 +26,7 @@ class CategoryController extends Controller
                         ];
             });
 
-        return Inertia::render('Category/Category', ['categories' => $categories]);
+        return Inertia::render('Category/List', ['categories' => $categories]);
     }
 
     /**
@@ -35,7 +36,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Category/Create');
     }
 
     /**
@@ -77,7 +78,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::where('id', '=', $id)->first();
+
+        return Inertia::render('Category/Edit', ['category' => [
+                        'id' => $category->id,
+                        'name' => $category->name,
+                    ]]);
     }
 
     /**
@@ -89,7 +95,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'unique:categories', 'max:100']
+        ]);
+
+        $category = Category::where('id', '=', $id)->update([
+            'user_id' => Auth::id(),
+            'name' => $request->name
+        ]);
+
+        return Redirect::route('category.index', $category)->with('success', 'Category updated');
     }
 
     /**
@@ -100,6 +115,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::where('id', '=', $id)->first();
+        $category->delete();
+
+        return Redirect::back()->with('success', 'Category deleted.');
+
     }
 }

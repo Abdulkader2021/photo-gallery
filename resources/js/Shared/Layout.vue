@@ -22,13 +22,14 @@
             <!-- Container -->
             <div class="container-fluid page-wrapper">
 
+                <!--/Flash Message -->
                 <FlashMessage />
-
 
                 <slot />
 
             </div>
             <!-- /Container -->
+
             <!-- /Footer -->
             <Footer />
         </div>

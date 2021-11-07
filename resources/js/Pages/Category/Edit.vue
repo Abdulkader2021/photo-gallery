@@ -1,13 +1,13 @@
 <template>
     <Head>
-        <title>Create Category</title>
+        <title>Category Edit</title>
         <meta type="description" content="Photo gallery category" head-key="description"/>
     </Head>
 
     <div class="row mb-4">
         <div class="col-xl-12">
             <div class="deshboard-top text-uppercase font-bold mb-2">
-                <h6>Photo Gallery - Create Category </h6>
+                <h6>Photo Gallery - Edit Category </h6>
             </div>
             <hr>
         </div><!--Dashboard-head-->
@@ -19,44 +19,46 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Add Category</h1>
+                        <h1>Category Edit</h1>
                     </div>
 
                     <div class="card-body">
-                        <form @submit.prevent="store">
+                        <form @submit.prevent="update">
                             <div class="form-group">
                                 <label for="categoryTitle" class="mb-2">Category Title</label>
                                 <input type="text" v-model="form.name" class="form-control" id="categoryTitle"
                                        placeholder="Category Name">
-                                <div class="text-danger mt-2" v-if="$page.props.errors.name">{{$page.props.errors.name }}</div>
+                                <div class="text-danger mt-2" v-if="$page.props.errors.name">{{
+                                        $page.props.errors.name
+                                    }}
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-outline-primary">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Create",
+    name: "Edit",
+    props:{
+        category: Object
+    },
     remember: 'form',
     data() {
         return {
             form: this.$inertia.form({
-                name: null
+                name: this.category.name
             })
         }
     },
     methods: {
-        store() {
-            this.form.post(this.route('category.store'), {
-                preserveScroll: true,
-                onSuccess: () => this.form.reset('name'),
-            });
+        update() {
+            this.form.put(this.route('category.update', this.category.id));
         }
     }
 }

@@ -1,13 +1,12 @@
 <template>
-    <div class="flash-message mt-3" role="alert" v-if="$page.props.flash.success && show" >
-            <div class="alert alert-success alert-dismissible fade show"
-                 role="alert">
-                {{ $page.props.flash.success }}
-
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <div class="flash-message mt-3" role="alert" v-if="$page.props.flash.success && show">
+        <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+            {{ $page.props.flash.success }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 </template>
 
@@ -19,8 +18,8 @@ export default {
         }
     },
     watch: {
-        '$page.props.flash' : {
-            handler(){
+        '$page.props.flash': {
+            handler() {
                 this.show = true
             },
             deep: true,
@@ -29,6 +28,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
