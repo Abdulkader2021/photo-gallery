@@ -17,8 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('user_id', '=', Auth::id())
-                    ->orderBy('id', 'desc')
+        $categories = Category::orderBy('id', 'desc')
                     ->paginate(10)->through(function ($category){
                         return [
                           'id' => $category->id,
