@@ -14,8 +14,10 @@ class GalleryFactory extends Factory
     public function definition()
     {
         return [
-//            'name' => $this->faker->jobTitle,
-//            'user_id' => 1,
+            'user_id' => 1,
+            'category_id' => 1,
+            'name' => $this->faker->jobTitle,
+            'image' => $this->faker->image('public/storage/gallery', 640, 480),
         ];
     }
 }
