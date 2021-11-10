@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class GalleryController extends Controller
 {
@@ -13,7 +16,16 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galleries = Gallery::orderBy('id', 'desc')
+                    ->paginate(10)->through(function ($gallery){
+                        return [
+                            'id' => $gallery->id,
+                            'name' => $gallery->name,
+                            'image' => $gallery->image,
+                        ];
+                    });
+
+        return Inertia::render('Gallery/List', ['galleries' => $galleries]);
     }
 
     /**
